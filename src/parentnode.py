@@ -14,7 +14,9 @@ class ParentNode(HTMLNode):
         for child in self.children:
             if child.children != None:
                 result += child.to_html()
-            else:
+            elif child.tag != None:
                 result += f"<{child.tag}>{child.value}</{child.tag}>"
-        return f"<{self.tag}{self.props or ""}>{result}</{self.tag}>"
+            else:
+                result += child.value
+        return f"<{self.tag or ""}{self.props or ""}>{result}</{self.tag or ""}>"
     
