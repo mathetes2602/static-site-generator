@@ -15,7 +15,7 @@ class ParentNode(HTMLNode):
             if child.children:
                 result += child.to_html()
             elif child.tag:
-                result += f"<{child.tag} {child.props_to_html() or ""}>{child.value or ""}</{child.tag}>"
+                result += f"<{child.tag}{child.props_to_html() or ""}>{child.value or ""}</{child.tag}>"
             else:
                 result += child.value
         return f"<{self.tag or ""}{self.props_to_html() or ""}>{result}</{self.tag or ""}>"
